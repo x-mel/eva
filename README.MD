@@ -17,5 +17,5 @@ promptfile.com
 vodlocker.com  
 briskfile.com  
 
-#Comments
-This a project for one of our classes, so you won't be able to use our service yet. But you can use the code. 
+##Comments
+This a project for one of our classes, so you won't be able to use our service yet. 
