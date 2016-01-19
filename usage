@@ -1,0 +1,14 @@
+# Compile the file
+javac *.java
+
+# Create the policy file java.policy with the folllowing line
+grant {permission java.security.AllPermission;};
+
+# Start the rmi Registry
+rmiregistry
+
+# Start the server with specification of the policy file
+java -Djava.security.policy=java.policy Server
+
+# Start the client with specification of the policy file
+java -Djava.security.policy=java.policy Client
