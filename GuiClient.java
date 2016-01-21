@@ -92,7 +92,7 @@ public class GuiClient extends JFrame implements ActionListener {
          public void actionPerformed(ActionEvent e) {
 			qrvidlink();
 			try {
-			Runtime.getRuntime().exec("display dafffffuq.png");
+			Runtime.getRuntime().exec("display tmp.png");
 			tfOutput.setText("The Qr code will be generated");}
         catch (Exception ex){           
 			ex.printStackTrace(System.out);
@@ -182,7 +182,7 @@ public class GuiClient extends JFrame implements ActionListener {
                 
                 byte[] bytimg = client.qrvid(vlink); 
                 BufferedImage img = ImageIO.read(new ByteArrayInputStream(bytimg));
-                File outputfile = new File("dafffffuq.png");
+                File outputfile = new File("tmp.png");
 				ImageIO.write(img,"png",outputfile);
 				 
 				//img= new ImageIcon(bytimg.toByteArray());   
