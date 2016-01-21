@@ -2,10 +2,13 @@
  *  all the abstract methods of the remote interface, and
  *  we explain explicitely their functionality
  */
-
+import java.awt.image.BufferedImage;
 import java.rmi.*;        // for remote exception
 import java.rmi.server.*; // this one for the Unicast Remote Object
 import java.io.*;
+import javax.imageio.*;
+import javax.swing.ImageIcon;
+import javax.swing.ImageIcon.*;
 
 // here we define the implementation that extends the UnicastRemote object and implement the interface
 public class Impl extends UnicastRemoteObject implements Interface  {
@@ -41,47 +44,54 @@ public class Impl extends UnicastRemoteObject implements Interface  {
 				input.close();
 				}
 			catch (Exception ex) {
-				L+="Error in executing the python command";
 				ex.printStackTrace();
 			}
 			return L;
     }
-    
- /******************* Streaming the video function ******************/
- // this function requires smplayer to be installed as media player
-     public void streamvid(String msg) throws RemoteException
-     {try {
 
-        Runtime.getRuntime().exec("smplayer " +msg);     }
-        catch (IOException e) 
-        {
-            e.printStackTrace();
-            System.exit(-1);
-        }
-      }
-      
-  /******************* Downloading the video function ******************/
-	public void downvid(String msg) throws RemoteException
-     {try {
-        Runtime.getRuntime().exec("wget -c " +msg);     }
-        catch (IOException e) 
-        {
-            e.printStackTrace();
-            System.exit(-1);
-        }
-     }
      
-   /******************* Qr Code Generation function ******************/
-     public void qrvid(String msg) throws RemoteException
-     {try {
-        Runtime.getRuntime().exec("qrencode "+msg + " -o temp.png");
-        Runtime.getRuntime().exec("display temp.png");     }
-        catch (IOException e) 
-        {
-            e.printStackTrace();
-            System.exit(-1);
+   /******************* Qr Code Generation function ******************
+     public BufferedImage qrvid(String msg) throws RemoteException
+     {BufferedImage img = null;
+		try {
+        Runtime.getRuntime().exec("qrencode "+msg + " -o tmp.png");
+				try {
+					img = ImageIO.read(new File("tmp.png"));
+				} catch (Exception exx) {exx.printStackTrace();}
+        //Runtime.getRuntime().exec("display temp.png");     
         }
+        catch (Exception e) 
+        {
+            e.printStackTrace(System.out);
+        }
+        return img;
+       }
+       
+          /******************* Qr Code Generation function ******************/
+     public byte[] qrvid(String msg) throws RemoteException
+     {ByteArrayOutputStream bytimg = null;
+		try {
+        Runtime.getRuntime().exec("qrencode "+msg + " -o tmp.png");
+				try {
+					
+						BufferedImage buffimg = null;
+							try {
+								buffimg = ImageIO.read(new File("tmp.png"));
+							} catch (Exception exxxx) {
+							}
+					
+						bytimg = new ByteArrayOutputStream();
+						ImageIO.write(buffimg, "png", bytimg);		
 
-     }
+				} catch (Exception exx) {exx.printStackTrace();}
+        //Runtime.getRuntime().exec("display temp.png");     
+        }
+        catch (Exception e) 
+        {
+            e.printStackTrace(System.out);
+        }
+        
+       return bytimg.toByteArray();
+      }
 
 }
