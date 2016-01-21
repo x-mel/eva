@@ -17,7 +17,7 @@ Just sit, chill, and enjoy!
 
 #Usage
 ##Standalone Python Core
-The python code is the core of EVA. It utilizes selenium webdriver and phantomjs to crawl webservices to snatch the direct video link. Only few  [web hosting services](#Supported-web-hosting-services) are supported so far.Adding support for additional webservices will be slower, if I have time.   
+The python code is the core of EVA. It utilizes selenium webdriver and phantomjs to crawl webservices to snatch the direct video link. Only few  [web hosting services](#supported-web-hosting-services) are supported so far.Adding support for additional webservices will be slower, if I have time.   
 Now the code can be used seperately than the Java RMI application, just run it from the command line with weblink as an argument (or multiple arguments). Here is an example.    
 ```
 python pridown.py http://vodlocker.com/z9x78jygfhme
