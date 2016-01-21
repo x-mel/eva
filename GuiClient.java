@@ -90,15 +90,15 @@ public class GuiClient extends JFrame implements ActionListener {
 	
 	  Butqr.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
+			// we load the qrvidlink() function that saves the image locally
 			qrvidlink();
 			try {
-			Runtime.getRuntime().exec("display tmp.png");
+			// we display the image that is saved
+			Runtime.getRuntime().exec("display qrcode.png");
 			tfOutput.setText("The Qr code will be generated");}
         catch (Exception ex){           
 			ex.printStackTrace(System.out);
 			}
-			
-                    //new JLabel(new ImageIcon(qrvidlink()));
          }
       });
 
@@ -180,9 +180,11 @@ public class GuiClient extends JFrame implements ActionListener {
                 link = tfInput.getText();
                 vlink = client.getvid(link);
                 
+                // here we receive the image serialized into bytes from the server and 
+                // saved it on the client as png image
                 byte[] bytimg = client.qrvid(vlink); 
                 BufferedImage img = ImageIO.read(new ByteArrayInputStream(bytimg));
-                File outputfile = new File("tmp.png");
+                File outputfile = new File("qrcode.png");
 				ImageIO.write(img,"png",outputfile);
 				 
 				//img= new ImageIcon(bytimg.toByteArray());   

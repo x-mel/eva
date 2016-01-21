@@ -6,9 +6,7 @@ import java.awt.image.BufferedImage;
 import java.rmi.*;        // for remote exception
 import java.rmi.server.*; // this one for the Unicast Remote Object
 import java.io.*;
-import javax.imageio.*;
-import javax.swing.ImageIcon;
-import javax.swing.ImageIcon.*;
+import javax.imageio.*; 
 
 // here we define the implementation that extends the UnicastRemote object and implement the interface
 public class Impl extends UnicastRemoteObject implements Interface  {
@@ -49,38 +47,19 @@ public class Impl extends UnicastRemoteObject implements Interface  {
 			return L;
     }
 
-     
-   /******************* Qr Code Generation function ******************
-     public BufferedImage qrvid(String msg) throws RemoteException
-     {BufferedImage img = null;
-		try {
-        Runtime.getRuntime().exec("qrencode "+msg + " -o tmp.png");
-				try {
-					img = ImageIO.read(new File("tmp.png"));
-				} catch (Exception exx) {exx.printStackTrace();}
-        //Runtime.getRuntime().exec("display temp.png");     
-        }
-        catch (Exception e) 
-        {
-            e.printStackTrace(System.out);
-        }
-        return img;
-       }
-       
-          /******************* Qr Code Generation function ******************/
      public byte[] qrvid(String msg) throws RemoteException
      {ByteArrayOutputStream bytimg = null;
 		try {
-        Runtime.getRuntime().exec("qrencode "+msg + " -o tmp.png");
+        Runtime.getRuntime().exec("qrencode "+msg + " -o tmp.png"); //we save the image into a file
 				try {
 					
 						BufferedImage buffimg = null;
 							try {
-								buffimg = ImageIO.read(new File("tmp.png"));
+								buffimg = ImageIO.read(new File("tmp.png")); //we load the image into a buffered image
 							} catch (Exception exxxx) {
 							}
 					
-						bytimg = new ByteArrayOutputStream();
+						bytimg = new ByteArrayOutputStream();// we transform it into byte arrays
 						ImageIO.write(buffimg, "png", bytimg);		
 
 				} catch (Exception exx) {exx.printStackTrace();}
@@ -91,7 +70,7 @@ public class Impl extends UnicastRemoteObject implements Interface  {
             e.printStackTrace(System.out);
         }
         
-       return bytimg.toByteArray();
+       return bytimg.toByteArray(); //we return it to the client as bytes
       }
 
 }
