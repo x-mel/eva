@@ -42,34 +42,23 @@ public class Impl extends UnicastRemoteObject implements Interface  {
 				input.close();
 				}
 			catch (Exception ex) {
-				ex.printStackTrace();
+				System.out.println("GetVid failed: " + ex);
 			}
 			return L;
     }
-
-     public byte[] qrvid(String msg) throws RemoteException
+	public byte[] qrvid(String msg) throws RemoteException
      {ByteArrayOutputStream bytimg = null;
 		try {
-        Runtime.getRuntime().exec("qrencode "+msg + " -o tmp.png"); //we save the image into a file
-				try {
-					
-						BufferedImage buffimg = null;
-							try {
-								buffimg = ImageIO.read(new File("tmp.png")); //we load the image into a buffered image
-							} catch (Exception exxxx) {
-							}
-					
-						bytimg = new ByteArrayOutputStream();// we transform it into byte arrays
-						ImageIO.write(buffimg, "png", bytimg);		
+				Runtime.getRuntime().exec("qrencode "+msg + " -o tmp.png"); //we save the image into a file
+				BufferedImage buffimg = null;
+				buffimg = ImageIO.read(new File("tmp.png")); //we load the image into a buffered image
 
-				} catch (Exception exx) {exx.printStackTrace();}
-        //Runtime.getRuntime().exec("display temp.png");     
+				bytimg = new ByteArrayOutputStream();// we transform it into byte arrays
+				ImageIO.write(buffimg, "png", bytimg);		
         }
-        catch (Exception e) 
-        {
-            e.printStackTrace(System.out);
+        catch (Exception e){
+            System.out.println("QR code failed: " + e);
         }
-        
        return bytimg.toByteArray(); //we return it to the client as bytes
       }
 

@@ -97,7 +97,7 @@ public class GuiClient extends JFrame implements ActionListener {
 			Runtime.getRuntime().exec("display qrcode.png");
 			tfOutput.setText("The Qr code will be generated");}
         catch (Exception ex){           
-			ex.printStackTrace(System.out);
+			System.out.println("Qr Code failed: " + ex);
 			}
          }
       });
@@ -153,7 +153,7 @@ public class GuiClient extends JFrame implements ActionListener {
         Runtime.getRuntime().exec("smplayer " +msg);     }
         catch (Exception e) 
         {
-            e.printStackTrace();
+            System.out.println("Streaming with smplayer failed: " + e);
         }
 	    			
 	}
@@ -164,7 +164,7 @@ public class GuiClient extends JFrame implements ActionListener {
         Runtime.getRuntime().exec("wget -c " +msg);     }
         catch (Exception e) 
         {
-            e.printStackTrace();
+            System.out.println("Downloading with wget failed: " + e);
         }	
 	}
 
