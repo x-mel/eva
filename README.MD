@@ -25,6 +25,10 @@ python pridown.py http://vodlocker.com/z9x78jygfhme
 It will print the link to the video on the stdout.  
 Of course you need to install [selenium](http://selenium-python.readthedocs.org/installation.html) and [phantomjs](http://phantomjs.org/).
 
+### Updated Version
+An updated version of the core app, qeva and pleva, with more supported websites is also included in the repository.   
+qeva generate a qr-code and pleva add the download link to smplayer playlist.
+
 ##Java RMI application
 The app was developped for a class project, implementing Java RMI application. We set up 2 machines on the same network, a server and a client. 
 The client send the webservice link to the server and the server return the direct video link.   
@@ -67,6 +71,10 @@ link printed in the lower line. And press any of the button for more functionali
 promptfile.com  
 vodlocker.com  
 briskfile.com  
+bestreams.com  
+vidzi.tv  
+streamin.to  
+
 
 ##Comments
 We had lots of fun making this application, with brain crushing moments, especially serializing that image on java to send it over rmi, took nearly 6hrs to solve. Thanks to everyone involved :)  
