@@ -5,7 +5,7 @@ Java RMI Application for downloading, streaming not-so-totally legally acquired 
 Ahmad Mel  
 Ruben Ruperez 
 
-# What is madness?
+# What is this madness?
 Remember that last time you were trying to watch that episode of Game of thrones on a streaming website? 500 pop ads, and
 lots of clicks to get to the actual video, and bummer, you can't even download it for free. Just sitting there waiting for it
 to buffer, and praying nothing goes wrong. That's by no mean a way to watch Arya Stark beating the shit out of the Lannisters.  
