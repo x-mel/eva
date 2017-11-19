@@ -1,11 +1,11 @@
-#EVA - Extraordinary Video App
+# EVA - Extraordinary Video App
 Java RMI Application for downloading, streaming not-so-totally legally acquired movies. Developped for our class of Distributed Systems.
 
-#Contributors
+# Contributors
 Ahmad Mel  
 Ruben Ruperez 
 
-#What is madness?
+# What is madness?
 Remember that last time you were trying to watch that episode of Game of thrones on a streaming website? 500 pop ads, and
 lots of clicks to get to the actual video, and bummer, you can't even download it for free. Just sitting there waiting for it
 to buffer, and praying nothing goes wrong. That's by no mean a way to watch Arya Stark beating the shit out of the Lannisters.  
@@ -15,8 +15,8 @@ can use to directly download it, or stream it with your favorite video player. Y
 Just sit, chill, and enjoy!
 
 
-#Usage
-##Standalone Python Core
+# Usage
+## Standalone Python Core
 The python code is the core of EVA. It utilizes selenium webdriver and phantomjs to crawl webservices to snatch the direct video link. Only few  [web hosting services](#supported-web-hosting-services) are supported so far.Adding support for additional webservices will be slower, if I have time.   
 Now the code can be used seperately than the Java RMI application, just run it from the command line with weblink as an argument (or multiple arguments). Here is an example.    
 ```
@@ -29,11 +29,15 @@ Of course you need to install [selenium](http://selenium-python.readthedocs.org/
 An updated version of the core app, qeva and pleva, with more supported websites is also included in the repository.   
 qeva generate a qr-code and pleva add the download link to smplayer playlist.
 
-##Java RMI application
+### Update of the Updated Version
+An ultimate version was recently developed, based on `eva.py`, but with a cleaner code and interface. Hence, Ultimate Video App was born, succeeding `eva.py`.   
+The app is kinda of cli interface of primewire.ag, and offers an option to download openload link (only openload so far).
+
+## Java RMI application
 The app was developped for a class project, implementing Java RMI application. We set up 2 machines on the same network, a server and a client. 
 The client send the webservice link to the server and the server return the direct video link.   
 There are 2 client versions. [Client](Client.java) and [GuiClient](GuiClient.java), the former being a command-line program with only one functionality to print the returned direct video link, and the latter being an advanced version incorporating a graphical user interface and additional functionalities, like streaming the video, downloading it, or generating a qr code for streaming on mobile devices. The usage is listed in the file [usage](usage).  
-###Usage
+### Usage
 Clone the repo (download the files) and compile them
 ```
 javac *.java
@@ -67,7 +71,7 @@ link printed in the lower line. And press any of the button for more functionali
 ![GuiClient generating QR code](https://github.com/x-mel/eva/blob/master/demo/qrc.png "Qr Code demo")
 
 
-#Supported web hosting services
+# Supported web hosting services
 promptfile.com  
 vodlocker.com  
 briskfile.com  
@@ -76,5 +80,5 @@ vidzi.tv
 streamin.to  
 
 
-##Comments
+## Comments
 We had lots of fun making this application, with brain crushing moments, especially serializing that image on java to send it over rmi, took nearly 6hrs to solve. Thanks to everyone involved :)  
